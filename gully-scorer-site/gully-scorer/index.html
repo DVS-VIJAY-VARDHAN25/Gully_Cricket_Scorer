@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <!-- Makes the page fit a phone screen instead of shrinking a desktop layout. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Gully Scorer</title>
+
+  <!-- Apply the saved light/dark choice before the page paints, so it does not flash the wrong colours. -->
+  <script>
+    try {
+      var p = JSON.parse(localStorage.getItem('gully-prefs-v1') || '{}');
+      if (p.theme === 'light' || p.theme === 'dark') document.documentElement.setAttribute('data-theme', p.theme);
+    } catch (e) {}
+  </script>
+
+  <!-- Fonts from Google Fonts. If you are offline the page falls back to the system font. -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700;800&display=swap">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- The whole app is drawn into this empty box by app.js -->
+  <!-- app.js replaces everything inside this box. If you can still read the message below,
+       app.js or engine.js did not load: check that all the files are in the SAME folder. -->
+  <div id="app">
+    <p style="font:16px/1.5 system-ui,sans-serif;padding:24px;max-width:480px;margin:0 auto">
+      <b>Gully Scorer could not start.</b><br>
+      This page needs <code>engine.js</code>, <code>app.js</code> and <code>style.css</code> in the same folder as <code>index.html</code>.
+      Put all the files together and open <code>index.html</code> again, or use <code>gully-scorer-single.html</code>, which works on its own.
+    </p>
+  </div>
+  <!-- A small message that pops up at the bottom ("Undone", "Ball updated") -->
+  <div id="toast" role="status" aria-live="polite"></div>
+
+  <!-- Order matters: engine.js first, because app.js uses it. -->
+  <script src="engine.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
