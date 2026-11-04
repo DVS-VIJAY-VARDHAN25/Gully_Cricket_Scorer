@@ -1,4 +1,4 @@
-# Gully Scorer
+# Gully Cricket Scorer
 
 A cricket scorer for gully matches. Plain HTML, CSS and JavaScript. No install, no build step, no server.
 
